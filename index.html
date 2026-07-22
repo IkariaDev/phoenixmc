@@ -2,7 +2,7 @@
 <html lang="en" class="dark">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>KyroNyxMC — Free Minecraft Thumbnail Designer & 3D Artist</title>
   <meta name="description" content="100% FREE High-CTR Minecraft YouTube Thumbnails, 3D Character Renders & Visual Design by KyroNyxMC." />
   
@@ -64,17 +64,46 @@
       <span class="nav-brand-name">KYRONYX MC</span>
     </a>
 
-    <ul class="nav-links">
+    <!-- Desktop Navigation Links -->
+    <ul class="nav-links desktop-nav">
       <li><a href="#about" class="nav-link">About</a></li>
       <li><a href="#projects" class="nav-link">Projects</a></li>
       <li><a href="#comparison" class="nav-link">Before/After</a></li>
     </ul>
 
-    <a href="#contact" class="btn-cta">
-      <span>Get Free Thumbnail</span>
-      <i data-lucide="gift"></i>
-    </a>
+    <div class="nav-actions">
+      <a href="#contact" class="btn-cta desktop-cta">
+        <span>Get Free Thumbnail</span>
+        <i data-lucide="gift"></i>
+      </a>
+
+      <!-- Mobile Hamburger Menu Button -->
+      <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle navigation menu">
+        <span class="bar bar-1"></span>
+        <span class="bar bar-2"></span>
+        <span class="bar bar-3"></span>
+      </button>
+    </div>
   </nav>
+
+  <!-- Mobile Drawer Overlay Menu -->
+  <div class="mobile-nav-overlay" id="mobile-nav-overlay">
+    <div class="mobile-nav-content">
+      <ul class="mobile-nav-links">
+        <li><a href="#about" class="mobile-nav-link">About</a></li>
+        <li><a href="#projects" class="mobile-nav-link">Projects</a></li>
+        <li><a href="#comparison" class="mobile-nav-link">Before/After</a></li>
+        <li><a href="#contact" class="mobile-nav-link mobile-cta-link">Get Free Thumbnail <i data-lucide="gift"></i></a></li>
+      </ul>
+
+      <div class="mobile-nav-footer">
+        <a href="https://discord.gg/M8vBvbDdR" target="_blank" rel="noopener" class="mobile-discord-btn">
+          <i data-lucide="message-square"></i>
+          <span>Join Discord</span>
+        </a>
+      </div>
+    </div>
+  </div>
 
   <!-- HERO SECTION -->
   <section class="hero-section" id="hero">
@@ -85,7 +114,7 @@
     <div class="hero-content">
       <h1 class="hero-title" id="hero-title">
         <span class="char">K</span><span class="char">Y</span><span class="char">R</span><span class="char">O</span><span class="char">N</span><span class="char">Y</span><span class="char">X</span>
-        <span class="char" style="margin-left: 0.3em; color: var(--accent-turquoise);">M</span><span class="char" style="color: var(--accent-turquoise);">C</span>
+        <span class="char hero-title-highlight">M</span><span class="char hero-title-highlight">C</span>
       </h1>
 
       <div class="hero-subtitle-wrapper">
@@ -154,7 +183,7 @@
     </div>
 
     <div class="projects-grid">
-      <!-- Project 1 (User Uploaded Image 1: Potion Beacon Ritual) -->
+      <!-- Project 1 -->
       <div class="project-card" data-title="KyroNyxMC Potion Ritual" data-category="3D Beacon & Potion Particles" data-img="assets/user_thumb1.jpg" onclick="openProjectModal(1)">
         <div class="project-image-wrapper">
           <img src="assets/user_thumb1.jpg" alt="KyroNyxMC Potion Ritual Minecraft Thumbnail" class="project-image" />
@@ -170,7 +199,7 @@
         </div>
       </div>
 
-      <!-- Project 2 (User Uploaded Image 2: Netherite Army Siege) -->
+      <!-- Project 2 -->
       <div class="project-card" data-title="KyroNyxMC Netherite Army Siege" data-category="3D Netherite Army Battalion" data-img="assets/user_thumb2.jpg" onclick="openProjectModal(2)">
         <div class="project-image-wrapper">
           <img src="assets/user_thumb2.jpg" alt="Netherite Army Siege Minecraft Thumbnail" class="project-image" />
@@ -223,8 +252,8 @@
     </p>
 
     <div class="social-links">
-      <a href="https://discord.gg/M8vBvbDdR" target="_blank" rel="noopener" class="social-btn" style="padding: 16px 36px; font-size: 16px; border-color: var(--accent-turquoise); box-shadow: 0 0 20px rgba(0, 242, 254, 0.2);">
-        <i data-lucide="message-square" style="color: var(--accent-turquoise); width: 20px; height: 20px;"></i>
+      <a href="https://discord.gg/M8vBvbDdR" target="_blank" rel="noopener" class="social-btn">
+        <i data-lucide="message-square" style="color: var(--accent-turquoise);"></i>
         <span>Join Discord Server</span>
       </a>
     </div>

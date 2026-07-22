@@ -1,7 +1,6 @@
 /* -------------------------------------------------------------
- * PHOENIX MC - MINECRAFT THUMBNAIL DESIGNER PORTFOLIO
- * Main JavaScript (Three.js 3D Canvas, GSAP Animations, Lenis Smooth Scroll)
- * Header Font: Boldonse | Body Font: Inter
+ * PHOENIX MC / KYRONYX MC - MINECRAFT THUMBNAIL DESIGNER PORTFOLIO
+ * Main JavaScript (Three.js 3D Canvas, GSAP Animations, Lenis Smooth Scroll, Mobile Burger Menu)
  * ------------------------------------------------------------- */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -32,7 +31,37 @@ document.addEventListener('DOMContentLoaded', () => {
   });
   gsap.ticker.lagSmoothing(0);
 
-  // 2. THREE.JS 3D CANVAS BACKGROUND (Floating 3D Minecraft Cubes & Glowing Turquoise Particles)
+  // 2. MOBILE HAMBURGER MENU DRAWER LOGIC
+  const menuToggle = document.getElementById('mobile-menu-toggle');
+  const mobileOverlay = document.getElementById('mobile-nav-overlay');
+  const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+
+  function toggleMobileMenu() {
+    const isOpen = menuToggle.classList.toggle('active');
+    mobileOverlay.classList.toggle('active', isOpen);
+    document.body.classList.toggle('menu-open', isOpen);
+  }
+
+  function closeMobileMenu() {
+    menuToggle.classList.remove('active');
+    mobileOverlay.classList.remove('active');
+    document.body.classList.remove('menu-open');
+  }
+
+  if (menuToggle && mobileOverlay) {
+    menuToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleMobileMenu();
+    });
+
+    mobileLinks.forEach((link) => {
+      link.addEventListener('click', () => {
+        closeMobileMenu();
+      });
+    });
+  }
+
+  // 3. THREE.JS 3D CANVAS BACKGROUND (Floating 3D Minecraft Cubes & Glowing Turquoise Particles)
   const container = document.getElementById('three-canvas-container');
   if (container && window.THREE) {
     const scene = new THREE.Scene();
@@ -158,7 +187,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 3. CUSTOM CURSOR & HOVER EFFECTS
+  // 4. CUSTOM CURSOR & HOVER EFFECTS
   const cursor = document.getElementById('cursor');
   const follower = document.getElementById('cursor-follower');
   const cursorText = document.getElementById('cursor-text');
@@ -170,19 +199,22 @@ document.addEventListener('DOMContentLoaded', () => {
     mousePos.x = e.clientX;
     mousePos.y = e.clientY;
 
-    gsap.to(cursor, {
-      x: mousePos.x,
-      y: mousePos.y,
-      duration: 0.1,
-      ease: 'power2.out'
-    });
+    if (cursor) {
+      gsap.to(cursor, {
+        x: mousePos.x,
+        y: mousePos.y,
+        duration: 0.1,
+        ease: 'power2.out'
+      });
+    }
   });
 
   function updateFollower() {
-    followerPos.x += (mousePos.x - followerPos.x) * 0.15;
-    followerPos.y += (mousePos.y - followerPos.y) * 0.15;
-
-    follower.style.transform = `translate(${followerPos.x - 22}px, ${followerPos.y - 22}px)`;
+    if (follower) {
+      followerPos.x += (mousePos.x - followerPos.x) * 0.15;
+      followerPos.y += (mousePos.y - followerPos.y) * 0.15;
+      follower.style.transform = `translate(${followerPos.x - 22}px, ${followerPos.y - 22}px)`;
+    }
     requestAnimationFrame(updateFollower);
   }
   updateFollower();
@@ -190,15 +222,17 @@ document.addEventListener('DOMContentLoaded', () => {
   // Hover states for projects
   document.querySelectorAll('.project-card').forEach((card) => {
     card.addEventListener('mouseenter', () => {
-      cursor.classList.add('hovering-project');
-      cursorText.textContent = 'View';
+      if (cursor && cursorText) {
+        cursor.classList.add('hovering-project');
+        cursorText.textContent = 'View';
+      }
     });
     card.addEventListener('mouseleave', () => {
-      cursor.classList.remove('hovering-project');
+      if (cursor) cursor.classList.remove('hovering-project');
     });
   });
 
-  // 4. GSAP SCROLL ANIMATIONS
+  // 5. GSAP SCROLL ANIMATIONS
   // Hero title text reveal
   gsap.to('.hero-title .char', {
     y: 0,
@@ -226,10 +260,12 @@ document.addEventListener('DOMContentLoaded', () => {
     start: 'top -80',
     onUpdate: (self) => {
       const navbar = document.getElementById('navbar');
-      if (self.direction === 1 || window.scrollY > 80) {
-        navbar.classList.add('scrolled');
-      } else {
-        navbar.classList.remove('scrolled');
+      if (navbar) {
+        if (self.direction === 1 || window.scrollY > 80) {
+          navbar.classList.add('scrolled');
+        } else {
+          navbar.classList.remove('scrolled');
+        }
       }
     }
   });
@@ -258,7 +294,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 5. BEFORE & AFTER SLIDER INTERACTION
+  // 6. BEFORE & AFTER SLIDER INTERACTION (TOUCH & MOUSE SUPPORT)
   const sliderWrapper = document.getElementById('comparison-slider');
   const afterImg = document.getElementById('comparison-after');
   const sliderLine = document.getElementById('slider-line');
@@ -291,16 +327,25 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // Touch support for mobile
+    // Touch events for mobile responsiveness
+    sliderWrapper.addEventListener('touchstart', (e) => {
+      isDragging = true;
+      if (e.touches.length > 0) setSliderPosition(e.touches[0].clientX);
+    });
+
+    window.addEventListener('touchend', () => {
+      isDragging = false;
+    });
+
     sliderWrapper.addEventListener('touchmove', (e) => {
-      if (e.touches.length > 0) {
+      if (isDragging && e.touches.length > 0) {
         setSliderPosition(e.touches[0].clientX);
       }
     });
   }
 });
 
-// 6. PROJECT MODAL LOGIC
+// 7. PROJECT MODAL LOGIC
 function openProjectModal(id) {
   const modal = document.getElementById('project-modal');
   const modalImg = document.getElementById('modal-img');
@@ -322,22 +367,4 @@ function openProjectModal(id) {
 
 function closeProjectModal() {
   document.getElementById('project-modal').classList.remove('active');
-}
-
-// 7. COPY DISCORD HANDLE
-function copyDiscordHandle() {
-  navigator.clipboard.writeText('@phoenixmcyt').then(() => {
-    const btn = document.getElementById('btn-discord');
-    const span = btn.querySelector('span');
-    const originalText = span.textContent;
-    span.textContent = 'Copied to Clipboard!';
-    btn.style.borderColor = 'var(--accent-mint)';
-    btn.style.color = 'var(--accent-mint)';
-
-    setTimeout(() => {
-      span.textContent = originalText;
-      btn.style.borderColor = '';
-      btn.style.color = '';
-    }, 2500);
-  });
 }
