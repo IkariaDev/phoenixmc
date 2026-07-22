@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PhoenixMCYT — Free Minecraft Thumbnail Designer & 3D Artist</title>
+  <meta name="description" content="100% FREE High-CTR Minecraft YouTube Thumbnails, 3D Character Renders & Visual Design by PhoenixMCYT." />
+  
+  <!-- Favicon / Website Icon (PhoenixMCYT Minecraft Skin Head) -->
+  <link rel="icon" type="image/png" href="https://visage.surgeplay.com/head/128/PhoenixMCYT" />
+  <link rel="shortcut icon" href="https://visage.surgeplay.com/head/128/PhoenixMCYT" />
+  <link rel="apple-touch-icon" href="https://visage.surgeplay.com/head/128/PhoenixMCYT" />
+
+  <!-- Open Graph / Link Preview Meta Tags (Discord, WhatsApp, iMessage, Social Media) -->
+  <meta property="og:title" content="PhoenixMCYT — Free Minecraft Thumbnail Designer & 3D Artist" />
+  <meta property="og:description" content="100% FREE High-CTR Minecraft YouTube Thumbnails & 3D Character Renders by PhoenixMCYT." />
+  <meta property="og:image" content="assets/user_thumb1.jpg" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="PhoenixMCYT Portfolio" />
+
+  <!-- Twitter / X Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="PhoenixMCYT — Free Minecraft Thumbnail Designer" />
+  <meta name="twitter:description" content="100% FREE High-CTR Minecraft YouTube Thumbnails & 3D Character Renders!" />
+  <meta name="twitter:image" content="assets/user_thumb1.jpg" />
+
+  <!-- Custom Google Fonts: Boldonse for Headers, Inter for Body Text -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Boldonse&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+  
+  <!-- CDNs for GSAP, Lenis, Three.js & Lucide Icons -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+  <!-- Custom Cursor Elements -->
+  <div class="custom-cursor" id="cursor"><span class="cursor-text" id="cursor-text">View</span></div>
+  <div class="custom-cursor-follower" id="cursor-follower"></div>
+
+  <!-- Background Guide Lines (matching nithinmwarrier.com) -->
+  <div class="grid-lines">
+    <div class="line-left"></div>
+    <div class="line-right"></div>
+  </div>
+
+  <!-- Three.js 3D Background Canvas -->
+  <div id="three-canvas-container"></div>
+
+  <!-- Sticky Navbar -->
+  <nav class="navbar" id="navbar">
+    <a href="#hero" class="nav-brand">
+      <img src="https://visage.surgeplay.com/head/128/PhoenixMCYT" alt="PhoenixMCYT Skin" class="nav-avatar" onerror="this.src='https://mc-heads.net/avatar/PhoenixMCYT'" />
+      <span class="nav-brand-name">PHOENIX MC</span>
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="#about" class="nav-link">About</a></li>
+      <li><a href="#projects" class="nav-link">Projects</a></li>
+      <li><a href="#comparison" class="nav-link">Before/After</a></li>
+    </ul>
+
+    <a href="#contact" class="btn-cta">
+      <span>Get Free Thumbnail</span>
+      <i data-lucide="gift"></i>
+    </a>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section class="hero-section" id="hero">
+    <!-- Hero 3D Portrait / Minecraft Skin Render -->
+    <img src="assets/portrait_hero.jpg" alt="PhoenixMCYT 3D Skin Portrait" class="hero-background-portrait" onerror="this.src='https://visage.surgeplay.com/full/800/PhoenixMCYT'" />
+    <div class="hero-gradient-overlay"></div>
+
+    <div class="hero-content">
+      <h1 class="hero-title" id="hero-title">
+        <span class="char">P</span><span class="char">H</span><span class="char">O</span><span class="char">E</span><span class="char">N</span><span class="char">I</span><span class="char">X</span>
+        <span class="char" style="margin-left: 0.3em; color: var(--accent-turquoise);">M</span><span class="char" style="color: var(--accent-turquoise);">C</span>
+      </h1>
+
+      <div class="hero-subtitle-wrapper">
+        <div class="hero-line"></div>
+        <p class="hero-subtitle">FREE MINECRAFT <span>THUMBNAIL DESIGNER</span> & 3D ARTIST</p>
+        <div class="hero-line"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE TAPE -->
+  <div class="marquee-tape">
+    <div class="marquee-content">
+      <div class="marquee-item"><span>100% FREE THUMBNAILS</span><div class="dot"></div></div>
+      <div class="marquee-item"><span>3D CINEMA 4D RIGS</span><div class="dot"></div></div>
+      <div class="marquee-item"><span>HIGH CTR COMPOSITING</span><div class="dot"></div></div>
+      <div class="marquee-item"><span>FREE FOR CREATORS</span><div class="dot"></div></div>
+      <div class="marquee-item"><span>PHOTOSHOP LIGHTING & VFX</span><div class="dot"></div></div>
+      <!-- Repeat for infinite marquee effect -->
+      <div class="marquee-item"><span>100% FREE THUMBNAILS</span><div class="dot"></div></div>
+      <div class="marquee-item"><span>3D CINEMA 4D RIGS</span><div class="dot"></div></div>
+      <div class="marquee-item"><span>HIGH CTR COMPOSITING</span><div class="dot"></div></div>
+      <div class="marquee-item"><span>FREE FOR CREATORS</span><div class="dot"></div></div>
+      <div class="marquee-item"><span>PHOTOSHOP LIGHTING & VFX</span><div class="dot"></div></div>
+    </div>
+  </div>
+
+  <!-- ABOUT & PHILOSOPHY SECTION -->
+  <section class="about-section" id="about">
+    <span class="section-label">Vision & Free Quality</span>
+    <div class="about-grid">
+      <div>
+        <h2 class="about-headline">
+          High Quality Minecraft Thumbnails — <span>100% Free</span> For Every Creator.
+        </h2>
+        <p class="about-description">
+          I believe every Minecraft YouTuber deserves thumbnail graphics that grab attention and drive clicks. I design custom 3D scene renders with potion effects, army battles, and glowing ambient lighting completely for free!
+        </p>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-number">$0</div>
+          <div class="stat-label">Always 100% Free</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" data-target="5">0</div>
+          <div class="stat-label">Thumbnails Crafted</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" data-target="6">0%</div>
+          <div class="stat-label">Average CTR Boost</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" data-target="100">0%</div>
+          <div class="stat-label">Happy Creators</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CURATED PROJECTS SECTION -->
+  <section class="projects-section" id="projects">
+    <span class="section-label">Selected Portfolio</span>
+    <div class="projects-header">
+      <h2 class="section-title">Free Thumbnail Showcase</h2>
+      <p style="color: var(--text-muted); max-width: 400px;">
+        Here are actual custom Minecraft 3D renders created for creators. All thumbnails are provided completely free!
+      </p>
+    </div>
+
+    <div class="projects-grid">
+      <!-- Project 1 (User Uploaded Image 1: Potion Beacon Ritual) -->
+      <div class="project-card" data-title="KyroNyxMC Potion Ritual" data-category="3D Beacon & Potion Particles" data-img="assets/user_thumb1.jpg" onclick="openProjectModal(1)">
+        <div class="project-image-wrapper">
+          <img src="assets/user_thumb1.jpg" alt="KyroNyxMC Potion Ritual Minecraft Thumbnail" class="project-image" />
+          <div class="project-overlay"></div>
+        </div>
+        <div class="project-info">
+          <span class="project-category">3D Beacon & Potion Particles</span>
+          <h3 class="project-title">KyroNyxMC Potion Ritual</h3>
+          <div class="project-stats">
+            <span style="color: var(--accent-mint); font-weight: bold;"><i data-lucide="gift" style="width: 14px; height: 14px;"></i> 100% FREE</span>
+            <span>• +6% CTR Boost</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 2 (User Uploaded Image 2: Netherite Army Battalion) -->
+      <div class="project-card" data-title="KyroNyxMC Netherite Army Siege" data-category="3D Netherite Army Battalion" data-img="assets/user_thumb2.jpg" onclick="openProjectModal(2)">
+        <div class="project-image-wrapper">
+          <img src="assets/user_thumb2.jpg" alt="Netherite Army Siege Minecraft Thumbnail" class="project-image" />
+          <div class="project-overlay"></div>
+        </div>
+        <div class="project-info">
+          <span class="project-category">3D Netherite Army Battalion</span>
+          <h3 class="project-title">KyroNyxMC Netherite Army Siege</h3>
+          <div class="project-stats">
+            <span style="color: var(--accent-mint); font-weight: bold;"><i data-lucide="gift" style="width: 14px; height: 14px;"></i> 100% FREE</span>
+            <span>• +6% CTR Boost</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BEFORE & AFTER COMPARISON SECTION -->
+  <section class="comparison-section" id="comparison">
+    <span class="section-label">Render Polish</span>
+    <h2 class="section-title" style="text-align: center; margin-bottom: 20px;">RAW 3D Render vs Photoshop FX</h2>
+    <p style="text-align: center; color: var(--text-muted); max-width: 600px; margin: 0 auto;">
+      Slide to see how RAW 3D Minecraft scene renders are enhanced with glowing potion effects, smoke, and lighting highlights.
+    </p>
+
+    <div class="comparison-wrapper" id="comparison-slider">
+      <!-- RAW Image (Before) -->
+      <img src="assets/user_thumb1.jpg" alt="RAW Render" class="comparison-img" style="filter: saturate(0.3) contrast(0.7);" />
+      <!-- Edited Image (After) -->
+      <img src="assets/user_thumb1.jpg" alt="Final Thumbnail" class="comparison-overlay-img" id="comparison-after" />
+      
+      <span class="label-before">RAW 3D Render</span>
+      <span class="label-after">Final Edit</span>
+
+      <div class="comparison-slider-line" id="slider-line">
+        <div class="comparison-slider-handle">
+          <i data-lucide="chevrons-left-right"></i>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER & CONTACT SECTION -->
+  <footer class="footer-section" id="contact">
+    <span class="section-label">Get Your Free Thumbnail</span>
+    <h2 class="footer-title">GET YOUR <span>FREE THUMBNAIL</span></h2>
+
+    <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto 30px; font-size: 1.1rem;">
+      Need a free 3D Minecraft thumbnail for your next video? Join the Discord server to request yours!
+    </p>
+
+    <div class="social-links">
+      <a href="https://discord.gg/M8vBvbDdR" target="_blank" rel="noopener" class="social-btn" style="padding: 16px 36px; font-size: 16px; border-color: var(--accent-turquoise); box-shadow: 0 0 20px rgba(0, 242, 254, 0.2);">
+        <i data-lucide="message-square" style="color: var(--accent-turquoise); width: 20px; height: 20px;"></i>
+        <span>Join Discord Server</span>
+      </a>
+    </div>
+
+    <div class="copyright">
+      © 2026 PhoenixMCYT. 100% Free Minecraft Thumbnail Design for Creators.
+    </div>
+  </footer>
+
+  <!-- PROJECT DETAIL MODAL -->
+  <div class="modal-overlay" id="project-modal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeProjectModal()">&times;</button>
+      <img id="modal-img" src="" alt="Project Preview" style="width: 100%; border-radius: 12px; margin-bottom: 24px; aspect-ratio: 16/9; object-fit: cover;" />
+      <span class="project-category" id="modal-category">3D Render</span>
+      <h2 class="project-title" id="modal-title" style="font-size: 2rem; margin: 8px 0 16px;">Project Title</h2>
+      <p id="modal-desc" style="color: var(--text-muted); line-height: 1.7; font-size: 1.05rem;">
+        Full breakdown of the 3D rig layout, custom potion lighting setup, color grade adjustments, and performance metrics for this free Minecraft YouTube thumbnail.
+      </p>
+    </div>
+  </div>
+
+  <!-- JavaScript File -->
+  <script src="main.js"></script>
+</body>
+</html>
