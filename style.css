@@ -12,17 +12,18 @@
   --bg-card: #151820;
   --bg-card-hover: #1c202b;
   
-  --accent-turquoise: #00f2fe;
-  --accent-turquoise-dim: #00d2c4;
-  --accent-cyan-glow: rgba(0, 242, 254, 0.35);
-  --accent-mint: #08f7ce;
+  /* User Specified Deep Teal Turquoise */
+  --accent-turquoise: #00a896;
+  --accent-turquoise-dim: #008577;
+  --accent-cyan-glow: rgba(0, 168, 150, 0.35);
+  --accent-mint: #00c9b1;
   
   --text-main: #f3f5f8;
   --text-muted: #8e95a5;
   --text-dark: #08090c;
   
   --border-light: rgba(255, 255, 255, 0.08);
-  --border-turquoise: rgba(0, 242, 254, 0.25);
+  --border-turquoise: rgba(0, 168, 150, 0.3);
   --border-guide: rgba(255, 255, 255, 0.07);
   
   /* Fonts: Boldonse for headers, Inter for text */

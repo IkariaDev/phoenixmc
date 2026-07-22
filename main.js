@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
     scene.add(ambientLight);
 
-    const pointLight = new THREE.PointLight(0x00f2fe, 3, 50);
+    const pointLight = new THREE.PointLight(0x00a896, 3, 50);
     pointLight.position.set(0, 5, 10);
     scene.add(pointLight);
 
@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
       metalness: 0.8
     });
     const wireMat = new THREE.MeshBasicMaterial({
-      color: 0x00f2fe,
+      color: 0x00a896,
       wireframe: true
     });
 
@@ -108,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
     particlesGeo.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
     const particlesMat = new THREE.PointsMaterial({
       size: 0.08,
-      color: 0x00f2fe,
+      color: 0x00a896,
       transparent: true,
       opacity: 0.7
     });
